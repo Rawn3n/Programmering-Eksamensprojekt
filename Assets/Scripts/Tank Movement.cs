@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 public class TankMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] GameObject projectilePrefab;
-    [SerializeField] Transform shootPoint;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -19,12 +17,6 @@ public class TankMovement : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-    }
-
-    public void OnShoot(InputValue value)
-    {
-        if (!value.isPressed) return;
-        Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
     }
 
     void FixedUpdate()
