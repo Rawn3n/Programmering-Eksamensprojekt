@@ -1,19 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TankMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float rotationSpeed = 90f;
 
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
+    Rigidbody2D rb;
+    Vector2 moveInput;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // kaldt af send message fra Input System
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -21,8 +21,12 @@ public class TankMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 movement = (Vector2)transform.up * moveInput.y + (Vector2)transform.right * moveInput.x;
+        // Rotation (A / D)
+        float rotation = -moveInput.x * rotationSpeed * Time.fixedDeltaTime;
+        rb.MoveRotation(rb.rotation + rotation);
 
-        rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+        // Movement (W / S)
+        Vector2 forward = transform.right;
+        rb.MovePosition(rb.position + forward * moveInput.y * moveSpeed * Time.fixedDeltaTime);
     }
 }

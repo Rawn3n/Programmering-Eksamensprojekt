@@ -14,7 +14,8 @@ public class TankShooting : MonoBehaviour
         if (!value.isPressed) return;
         if (Time.time < lastShotTime + fireCooldown) return;
 
-        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        bullet.GetComponent<Bullet>().SetShooter(gameObject);
         lastShotTime = Time.time;
     }
 }
