@@ -14,9 +14,9 @@ public class TankMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = value.Get<Vector2>();
+        moveInput = context.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
@@ -25,7 +25,7 @@ public class TankMovement : MonoBehaviour
         float rotation = -moveInput.x * rotationSpeed * Time.fixedDeltaTime;
         rb.MoveRotation(rb.rotation + rotation);
 
-        // Movement (W / S)
+        // Movement (W / S) 
         Vector2 forward = transform.right;
         rb.MovePosition(rb.position + forward * moveInput.y * moveSpeed * Time.fixedDeltaTime);
     }

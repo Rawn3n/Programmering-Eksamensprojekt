@@ -31,8 +31,10 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == shooter) //sæt timer her hvis vi vil have at den skal kunne ramme tanken efter et stykke tid
-            return;
+        if (collision.gameObject == shooter)
+        {
+            return;  //sæt timer her hvis vi vil have at den skal kunne ramme tanken efter et stykke tid
+        }
 
         if (((1 << collision.gameObject.layer) & bounceLayers) != 0)
         {

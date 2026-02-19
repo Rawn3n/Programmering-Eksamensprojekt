@@ -9,13 +9,15 @@ public class TankShooting : MonoBehaviour
 
     float lastShotTime;
 
-    public void OnShoot(InputValue value)
+    public void OnShoot(InputAction.CallbackContext context)
     {
-        if (!value.isPressed) return;
+        if (!context.performed) return;
+
         if (Time.time < lastShotTime + fireCooldown) return;
 
         GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
         bullet.GetComponent<Bullet>().SetShooter(gameObject);
+
         lastShotTime = Time.time;
     }
 }
