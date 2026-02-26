@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7470813042614406027}
   - component: {fileID: 6135906669688632970}
   - component: {fileID: 5178565061814157663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: kanon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 568198066747311066}
   - component: {fileID: 7071440636934064643}
   - component: {fileID: 2048835850400115293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tank
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -287,6 +287,14 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0a9bd27a-ab4c-40c1-a9f8-72bceea1adaf
+    m_ActionName: 'Gameplay/Shoot[/Keyboard/m,/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 424a2e39-8bd0-4e97-9820-c3fc16408c3c
+    m_ActionName: 'Gameplay/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7071440636934064643}
         m_TargetAssemblyTypeName: TankShooting, Assembly-CSharp
@@ -300,8 +308,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0a9bd27a-ab4c-40c1-a9f8-72bceea1adaf
-    m_ActionName: 'Gameplay/Shoot[/Keyboard/m,/Keyboard/q]'
+    m_ActionId: 9d37460a-194d-4d0f-8e2b-113da80cd620
+    m_ActionName: 'Player 2/Shoot[/Keyboard/q]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 568198066747311066}
@@ -316,11 +324,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 424a2e39-8bd0-4e97-9820-c3fc16408c3c
-    m_ActionName: 'Gameplay/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+    m_ActionId: 855e5bee-a2ce-406f-bf60-02bab558b8e1
+    m_ActionName: 'Player 2/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
+  m_DefaultActionMap: Player 2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &568198066747311066
@@ -407,7 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7955359595281309069}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
