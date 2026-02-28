@@ -14,28 +14,26 @@ public class UI_Shoot : MonoBehaviour
     private float cooldownTime = 10.0f;
     private float cooldownTimer = 0.0f;
 
+    [SerializeField] private TankShooting tankShooting;
+
 
     void OnEnable()
     {
-        TankShooting.OnTankShoot += StartCooldown;
+        tankShooting.OnTankShoot += StartCooldown;
     }
 
     private void OnDisable()
     {
-        TankShooting.OnTankShoot -= StartCooldown;
+        tankShooting.OnTankShoot -= StartCooldown;
 
     }
-
 
     void Start()
     {
         textCooldown.gameObject.SetActive(false);
         imageCooldown.fillAmount = 0.0f;
-
-        
     }
 
-    
     void Update()
     {
         if (isCooldown)
@@ -62,7 +60,6 @@ public class UI_Shoot : MonoBehaviour
             imageCooldown.fillAmount = cooldownTimer / cooldownTime;
         }
 
-
     }
 
     private void StartCooldown(float duration)
@@ -75,19 +72,5 @@ public class UI_Shoot : MonoBehaviour
         imageCooldown.fillAmount = 1f;
     }
 
-    //public void UseSpell()
-    //{
-    //    if (isCooldown)
-    //    {
-
-    //    }
-    //    else
-    //    {
-    //        isCooldown = true;
-    //        textCooldown.gameObject.SetActive(true);
-    //        cooldownTimer = cooldownTime;
-
-    //    }
-
-    //}
+ 
 }

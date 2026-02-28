@@ -10,7 +10,7 @@ public class TankShooting : MonoBehaviour
 
     float lastShotTime;
 
-    public static event Action<float> OnTankShoot;
+    public event Action<float> OnTankShoot;
 
     public void OnShoot(InputAction.CallbackContext context)
     {
