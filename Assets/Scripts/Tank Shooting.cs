@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ public class TankShooting : MonoBehaviour
 
     float lastShotTime;
 
+    public static event Action<float> OnTankShoot;
+
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -19,5 +22,8 @@ public class TankShooting : MonoBehaviour
         bullet.GetComponent<Bullet>().SetShooter(gameObject);
 
         lastShotTime = Time.time;
+
+        //udsender event
+        OnTankShoot?.Invoke(fireCooldown);
     }
 }
