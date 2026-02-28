@@ -17,8 +17,9 @@ public class UI_Shoot : MonoBehaviour
     [SerializeField] private TankShooting tankShooting;
 
 
-    void OnEnable()
+    public void SetTank(TankShooting tank)
     {
+        tankShooting = tank;
         tankShooting.OnTankShoot += StartCooldown;
     }
 
