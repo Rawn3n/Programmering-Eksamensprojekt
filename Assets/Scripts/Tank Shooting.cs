@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class TankShooting : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform shootPoint;
-    [SerializeField] float fireCooldown = 0.5f;
+    float fireCooldown;
+    public float shootCooldown = 5f;
 
     float lastShotTime;
 
@@ -14,6 +16,7 @@ public class TankShooting : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
+        fireCooldown = shootCooldown;
         if (!context.performed) return;
 
         if (Time.time < lastShotTime + fireCooldown) return;
@@ -25,5 +28,17 @@ public class TankShooting : MonoBehaviour
 
         //udsender event
         OnTankShoot?.Invoke(fireCooldown);
+    }
+
+    public void ActivatePowerup(Powerups powerup, float duration)
+    {
+        powerup.StartPowerup(this);
+        StartCoroutine(PowerupTimer(powerup, duration));
+    }
+
+    private IEnumerator PowerupTimer(Powerups powerup, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        powerup.EndPowerup(this);
     }
 }

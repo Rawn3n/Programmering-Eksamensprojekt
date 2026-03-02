@@ -1,15 +1,24 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 
 public abstract class Powerups : MonoBehaviour
 {
+    [SerializeField] protected float duration = 10f;
+    [SerializeField] private GameObject currentTank;
 
-    public IEnumerator PowerupDuration(float duration)
+
+    public abstract void EndPowerup(TankShooting tank);
+    public abstract void StartPowerup(TankShooting tank);
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        yield return new WaitForSeconds(duration);
-        EndPowerup();
+        if (collision.collider.CompareTag("Player"))
+        {
+            TankShooting tank = collision.gameObject.GetComponent<TankShooting>();
+            tank.ActivatePowerup(this, duration);
+            Destroy(gameObject);
+        }
     }
-
-    public abstract void EndPowerup();
 }
