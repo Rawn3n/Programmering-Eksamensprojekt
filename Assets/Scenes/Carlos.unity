@@ -2545,7 +2545,7 @@ GameObject:
   - component: {fileID: 1949126550}
   - component: {fileID: 1949126549}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: PowerUP_miniGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2600,6 +2600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigun
   duration: 5
+  currentTank: {fileID: 0}
 --- !u!212 &1949126551
 SpriteRenderer:
   m_ObjectHideFlags: 0
