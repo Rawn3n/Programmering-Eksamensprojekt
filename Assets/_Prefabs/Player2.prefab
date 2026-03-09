@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   startHealth: 100
+  deathParticlesPrefab: {fileID: 5471563738847943440, guid: 598104ae7251a284d82fd1fb2b9df9d8, type: 3}
 --- !u!1 &7390553737988237001
 GameObject:
   m_ObjectHideFlags: 0

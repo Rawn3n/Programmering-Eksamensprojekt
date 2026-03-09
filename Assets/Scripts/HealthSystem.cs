@@ -5,6 +5,7 @@ public class HealthSystem : MonoBehaviour, IDamageAble
 {
     [SerializeField] float startHealth = 100f;
     private float currentHealth;
+    [SerializeField] private GameObject deathParticlesPrefab;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class HealthSystem : MonoBehaviour, IDamageAble
     }
     public void Die()
     {
+        Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
