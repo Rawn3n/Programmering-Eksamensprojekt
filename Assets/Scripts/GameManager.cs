@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
 
         SpawnPlayers();
+        Debug.Log("game manager start");
     }
     
 
@@ -48,9 +49,11 @@ public class GameManager : MonoBehaviour
             int index = Random.Range(0, playerSpawnpoints.Count);
             Transform spawn = playerSpawnpoints[index];
             playerSpawnpoints.RemoveAt(index);
+            Debug.Log($"Spawning player {i} at {spawn.position}");  
 
             // Instantiate player
             GameObject player = Instantiate(players[i], spawn.position, spawn.rotation);
+            Debug.Log("player spawned");
 
             // Find TankShooting på spilleren
             TankShooting tank = player.GetComponent<TankShooting>();

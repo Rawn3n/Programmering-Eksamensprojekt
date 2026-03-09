@@ -111,7 +111,7 @@ MonoBehaviour:
   bounceLayers:
     serializedVersion: 2
     m_Bits: 128
-  Damage: 1
+  damage: 100
 --- !u!50 &2979783617629944749
 Rigidbody2D:
   serializedVersion: 5

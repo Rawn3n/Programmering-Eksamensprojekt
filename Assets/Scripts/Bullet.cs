@@ -44,7 +44,8 @@ public class Bullet : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<IDamageAble>().TakeDamage(damage);
+            collision.gameObject.GetComponent<IDamageAble>()?.TakeDamage(damage);
+            Destroy(gameObject);
         }
         else
         {
