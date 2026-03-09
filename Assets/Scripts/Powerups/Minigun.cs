@@ -15,8 +15,5 @@ public class Minigun : Powerups
         tank.shootCooldown = 0.1f;
     }
 
-    public override void SetPowerupImage()
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

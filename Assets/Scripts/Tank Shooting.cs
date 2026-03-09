@@ -15,6 +15,8 @@ public class TankShooting : MonoBehaviour
     public float bulletScale = 1f;
 
     public event Action<float> OnTankShoot;
+    public event Action<Sprite> OnPowerupPickup;
+    public event Action OnPowerupEnd;
 
     public void OnShoot(InputAction.CallbackContext context)
     {
@@ -37,11 +39,15 @@ public class TankShooting : MonoBehaviour
     {
         powerup.StartPowerup(this);
         StartCoroutine(PowerupTimer(powerup, duration));
+        if (OnPowerupPickup != null)
+            OnPowerupPickup.Invoke(powerup.GetSprite());
     }
 
     private IEnumerator PowerupTimer(Powerups powerup, float duration)
     {
         yield return new WaitForSeconds(duration);
         powerup.EndPowerup(this);
+        OnPowerupEnd?.Invoke();
+
     }
 }

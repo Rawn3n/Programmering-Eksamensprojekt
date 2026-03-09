@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class UI_Shoot : MonoBehaviour
 {
@@ -9,24 +10,29 @@ public class UI_Shoot : MonoBehaviour
     private Image imageCooldown;
     [SerializeField]
     private TMP_Text textCooldown;
+    [SerializeField]
+    private Image imagePowerUP;
 
     private bool isCooldown = false;
     private float cooldownTime = 10.0f;
     private float cooldownTimer = 0.0f;
 
-    [SerializeField] private TankShooting tankShooting;
+    private TankShooting tankShooting;
 
 
     public void SetTank(TankShooting tank)
     {
         tankShooting = tank;
         tankShooting.OnTankShoot += StartCooldown;
+        tankShooting.OnPowerupPickup += SetPowerupImage;
+        tankShooting.OnPowerupEnd += RemovePowerupImage;
     }
 
     private void OnDisable()
     {
         tankShooting.OnTankShoot -= StartCooldown;
-
+        tankShooting.OnPowerupPickup -= SetPowerupImage;
+        tankShooting.OnPowerupEnd -= RemovePowerupImage;
     }
 
     void Start()
@@ -62,6 +68,19 @@ public class UI_Shoot : MonoBehaviour
         }
 
     }
+
+    private void SetPowerupImage(Sprite sprite)
+    {
+        imagePowerUP.sprite = sprite;
+        imagePowerUP.gameObject.SetActive(true);
+    }
+
+    private void RemovePowerupImage()
+    {
+        imagePowerUP.sprite = null;
+        Debug.Log("removePowerup image");
+    }
+    
 
     private void StartCooldown(float duration)
     {

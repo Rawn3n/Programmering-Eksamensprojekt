@@ -12,8 +12,5 @@ public class Sniper : Powerups
         tank.bulletScale /= scaleFactor;
     }
 
-    public override void SetPowerupImage()
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

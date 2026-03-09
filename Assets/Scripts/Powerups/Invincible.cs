@@ -11,10 +11,7 @@ public class Invincible : Powerups
 
     }
 
-    public override void SetPowerupImage()
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }
 
-}
+
