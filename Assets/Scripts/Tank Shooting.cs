@@ -5,12 +5,14 @@ using System.Collections;
 
 public class TankShooting : MonoBehaviour
 {
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] public GameObject bulletPrefab;
     [SerializeField] Transform shootPoint;
     float fireCooldown;
     public float shootCooldown = 5f;
 
     float lastShotTime;
+
+    public float bulletScale = 1f;
 
     public event Action<float> OnTankShoot;
 
@@ -22,6 +24,7 @@ public class TankShooting : MonoBehaviour
         if (Time.time < lastShotTime + fireCooldown) return;
 
         GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        bullet.transform.localScale *= bulletScale;
         bullet.GetComponent<Bullet>().SetShooter(gameObject);
 
         lastShotTime = Time.time;

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     GameObject shooter;
     TankShooting shooterScript;
 
-    public int Damage = 1;
+    public float damage = 100;
 
     Rigidbody2D rb;
     Vector2 lastVelocity;
@@ -44,8 +44,7 @@ public class Bullet : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            // TakeDamage(Damage);
-            Destroy(gameObject);
+            collision.gameObject.GetComponent<IDamageAble>().TakeDamage(damage);
         }
         else
         {

@@ -1,9 +1,24 @@
 using UnityEngine;
 
-public class HealthSystem : IDamageAble
+public class HealthSystem : MonoBehaviour, IDamageAble
 {
-    public void TakeDamage()
-    {
+    [SerializeField] float startHealth = 100f;
+    private float currentHealth;
 
+    void Start()
+    {
+        currentHealth = startHealth;
+    }
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

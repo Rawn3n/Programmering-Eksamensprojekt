@@ -13,6 +13,5 @@ public class Minigun : Powerups
     {
         oldCooldown = tank.shootCooldown;
         tank.shootCooldown = 0.1f;
-        //StartCoroutine(PowerupDuration(duration));
     }
 }
