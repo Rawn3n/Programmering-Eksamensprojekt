@@ -12,6 +12,8 @@ public abstract class Powerups : MonoBehaviour
     public abstract void EndPowerup(TankShooting tank);
     public abstract void StartPowerup(TankShooting tank);
 
+    public abstract void SetPowerupImage();
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
