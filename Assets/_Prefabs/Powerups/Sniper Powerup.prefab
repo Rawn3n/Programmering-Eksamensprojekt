@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5390471222587408295}
   - component: {fileID: 3260180532152851052}
   - component: {fileID: 8528470752765203224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sniper Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sniper
   duration: 10
   currentTank: {fileID: 0}
+  scaleFactor: 2

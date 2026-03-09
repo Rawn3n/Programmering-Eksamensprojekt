@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     TankShooting shooterScript;
 
     public float damage = 100;
+    private float delayTime = 0.1f;
+    private bool canDamageShooter = false;
 
     Rigidbody2D rb;
     Vector2 lastVelocity;
@@ -22,6 +24,7 @@ public class Bullet : MonoBehaviour
     {
         rb.linearVelocity = transform.right * speed;
         Destroy(gameObject, lifetime);
+        Invoke("AllowDamageToShooter", delayTime);
     }
 
     void FixedUpdate()
@@ -31,9 +34,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == shooter)
+        if (collision.gameObject == shooter && !canDamageShooter)
         {
-            return;  //sæt timer her hvis vi vil have at den skal kunne ramme tanken efter et stykke tid
+            return;
         }
 
         if (((1 << collision.gameObject.layer) & bounceLayers) != 0)
@@ -52,11 +55,15 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void SetShooter(GameObject shooterObj)
     {
         shooter = shooterObj;
         shooterScript = shooter.GetComponent<TankShooting>();
     }
 
+    private void AllowDamageToShooter()
+    {
+        canDamageShooter = true;
+    }
 }
-

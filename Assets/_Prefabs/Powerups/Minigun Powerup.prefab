@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5390471222587408295}
   - component: {fileID: 1432574459849745718}
   - component: {fileID: 3260180532152851052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Minigun Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

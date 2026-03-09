@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             int index = Random.Range(0, playerSpawnpoints.Count);
             Transform spawn = playerSpawnpoints[index];
             playerSpawnpoints.RemoveAt(index);
-            Debug.Log($"Spawning player {i} at {spawn.position}");  
+            Debug.Log($"Spawning player {i} at {spawn.position}");
 
             // Instantiate player
             GameObject player = Instantiate(players[i], spawn.position, spawn.rotation);
