@@ -12,6 +12,7 @@ public class UI_Shoot : MonoBehaviour
     private TMP_Text textCooldown;
     [SerializeField]
     private Image imagePowerUP;
+    private Sprite NonePowerUpImage;
 
     private bool isCooldown = false;
     private float cooldownTime = 10.0f;
@@ -37,6 +38,7 @@ public class UI_Shoot : MonoBehaviour
 
     void Start()
     {
+        NonePowerUpImage = imagePowerUP.sprite;
         textCooldown.gameObject.SetActive(false);
         imageCooldown.fillAmount = 0.0f;
     }
@@ -77,7 +79,7 @@ public class UI_Shoot : MonoBehaviour
 
     private void RemovePowerupImage()
     {
-        imagePowerUP.sprite = null;
+        imagePowerUP.sprite = NonePowerUpImage; ;  
         Debug.Log("removePowerup image");
     }
     
