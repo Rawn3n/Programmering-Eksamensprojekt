@@ -6,7 +6,7 @@ public class MapChooser : MonoBehaviour
 {
     public void RandomLevel()
     {
-        SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCount));
+        SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCount)); // test sceneCountInBuildSettings
     }
     
 }

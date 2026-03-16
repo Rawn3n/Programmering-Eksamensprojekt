@@ -22,6 +22,9 @@ public class HealthSystem : MonoBehaviour, IDamageAble
     public void Die()
     {
         Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+        GameManager.Instance.PlayerDied();
+        GameManager.Instance.playerList.Remove(gameObject);
+
         Destroy(gameObject);
     }
 }

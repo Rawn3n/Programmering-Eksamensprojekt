@@ -1,5 +1,7 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,13 +9,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     bool isGameOver = false;
+    //private MapChooser mapChooser;
 
     [SerializeField] private Transform[] spawnpoints;
     [SerializeField] private GameObject[] players;
+    [SerializeField] public List<GameObject> playerList = new List<GameObject>();
     [SerializeField] private UI_Shoot[] playerHUDs;
+
+    private float p1Score = 0;
+    private float p2Score = 0;
 
     void Awake()
     {
+
+        //mapChooser = GetComponent<MapChooser>();
+
         if (Instance == null)
         {
             Instance = this;
@@ -25,14 +35,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void InitLevel(Transform[] spawnpoints, UI_Shoot[] playerHUDs)
     {
-
-
+        playerList.Clear();
+        this.spawnpoints = spawnpoints;
+        this.playerHUDs = playerHUDs;
         SpawnPlayers();
-        Debug.Log("game manager start");
     }
-    
+
 
     void SpawnPlayers()
     {
@@ -54,6 +64,8 @@ public class GameManager : MonoBehaviour
             // Instantiate player
             GameObject player = Instantiate(players[i], spawn.position, spawn.rotation);
             Debug.Log("player spawned");
+            playerList.Add(player);
+
 
             // Find TankShooting på spilleren
             TankShooting tank = player.GetComponent<TankShooting>();
@@ -65,6 +77,80 @@ public class GameManager : MonoBehaviour
             hud.SetTank(tank);
 
         }
+    }
+    public void PlayerDied()
+    {
+        if (!isGameOver)
+        {
+            isGameOver = true;
+            //mapChooser.RandomLevel();
+            StartCoroutine(RestartGame());
+        }
+        else if (isGameOver)
+        {
+            if (playerList.Count <= 0)
+            {
+                //Score(null);
+            }
+        }
+    }
+
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(3f);
+        //mapChooser.RandomLevel();
+        LoadRandomLevel();
+
+        if (playerList.Count <= 0)
+        {
+            Score(null);
+        }
+        else
+        {
+            Score(playerList[0]);
+        }
+
+        isGameOver = false;
+        //playerList.Clear();
+        //InitLevel(spawnpoints, playerHUDs);
+    }
+
+
+    private void Score(GameObject winner)
+    {
+        if (winner == null)
+        {
+            Debug.LogWarning("Ended in a draw");
+            return;
+        }
+
+        //Debug.Log($"{winner.name} wins!");
+
+        //if (winner.CompareTag("Player1"))
+        //{
+        //    p1Score++;
+        //}
+        //else if (winner.CompareTag("Player2"))
+        //{
+        //    p2Score++;
+        //}
+        if (winner.name == "Player1(Clone)")
+        {
+            p1Score++;
+            Debug.Log($"Player 1 wins! Score: {p1Score}");
+        }
+        else if (winner.name == "Player2(Clone)")
+        {
+            p2Score++;
+            Debug.Log($"Player 2 wins! Score: {p2Score}");
+        }
+    }
+
+    void LoadRandomLevel()
+    {
+        Debug.Log("Loading new map");
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+        SceneManager.LoadScene(Random.Range(1, sceneCount));
     }
 }
 
