@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3494568856027991757}
   - component: {fileID: 5390471222587408295}
-  - component: {fileID: 8528470752765203224}
+  - component: {fileID: 6938139380890679759}
   - component: {fileID: 3260180532152851052}
   m_Layer: 8
-  m_Name: Sniper Powerup
+  m_Name: Invinceble Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8528470752765203224
+--- !u!114 &6938139380890679759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,13 +101,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7445837091972799510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e1dae4d2a16d8d49bf81df4fa17634f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b728b29b6495b44f9b24792ea6c8d75, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Sniper
+  m_EditorClassIdentifier: Assembly-CSharp::Invincible
   duration: 10
   currentTank: {fileID: 0}
   powerupSprite: {fileID: 4857205466551783528, guid: 9940b2f12fd3b3e4b85a324516cf68b5, type: 3}
-  scaleFactor: 2
 --- !u!58 &3260180532152851052
 CircleCollider2D:
   m_ObjectHideFlags: 0

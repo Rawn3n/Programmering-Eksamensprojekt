@@ -6,6 +6,7 @@ public class HealthSystem : MonoBehaviour, IDamageAble
     [SerializeField] float startHealth = 100f;
     private float currentHealth;
     [SerializeField] private GameObject deathParticlesPrefab;
+    [SerializeField] public bool canTakeDamage = true;
 
     void Start()
     {
@@ -13,6 +14,10 @@ public class HealthSystem : MonoBehaviour, IDamageAble
     }
     public void TakeDamage(float damage)
     {
+        if (!canTakeDamage)
+        {
+            return;
+        }
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
