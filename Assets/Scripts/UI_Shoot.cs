@@ -10,13 +10,24 @@ public class UI_Shoot : MonoBehaviour
     private Image imageCooldown;
     [SerializeField]
     private TMP_Text textCooldown;
+    
+    
     [SerializeField]
     private Image imagePowerUP;
     private Sprite NonePowerUpImage;
+    [SerializeField]
+    private Image PwrUPimageCooldown;
+    //[SerializeField]
+    //private TMP_Text textCooldown;
+
 
     private bool isCooldown = false;
     private float cooldownTime = 10.0f;
     private float cooldownTimer = 0.0f;
+
+    private bool isPowerupCooldown = false;
+    private float powerupCooldownTime = 0.0f;
+    private float powerupCooldownTimer = 0.0f;
 
     private TankShooting tankShooting;
 
@@ -26,14 +37,14 @@ public class UI_Shoot : MonoBehaviour
         tankShooting = tank;
         tankShooting.OnTankShoot += StartCooldown;
         tankShooting.OnPowerupPickup += SetPowerupImage;
-        tankShooting.OnPowerupEnd += RemovePowerupImage;
+        tankShooting.powerupDuration += CooldownPowerup;
     }
 
     private void OnDisable()
     {
         tankShooting.OnTankShoot -= StartCooldown;
         tankShooting.OnPowerupPickup -= SetPowerupImage;
-        tankShooting.OnPowerupEnd -= RemovePowerupImage;
+        tankShooting.powerupDuration -= CooldownPowerup;
     }
 
     void Start()
@@ -48,6 +59,10 @@ public class UI_Shoot : MonoBehaviour
         if (isCooldown)
         {
             ApplyCooldown();
+        }
+        if (isPowerupCooldown)
+        {
+            ApplyPowerupCooldown();
         }
     }
 
@@ -69,6 +84,22 @@ public class UI_Shoot : MonoBehaviour
             imageCooldown.fillAmount = cooldownTimer / cooldownTime;
         }
 
+    }
+
+    private void ApplyPowerupCooldown()
+    {
+        powerupCooldownTimer -= Time.deltaTime;
+
+        if (powerupCooldownTimer <= 0.0f)
+        {
+            isPowerupCooldown = false;
+            PwrUPimageCooldown.fillAmount = 0.0f;
+            RemovePowerupImage(); // Fjern powerup billedet når det udløber
+        }
+        else
+        {
+            PwrUPimageCooldown.fillAmount = powerupCooldownTimer / powerupCooldownTime;
+        }
     }
 
     private void SetPowerupImage(Sprite sprite)
@@ -93,6 +124,12 @@ public class UI_Shoot : MonoBehaviour
         textCooldown.gameObject.SetActive(true);
         imageCooldown.fillAmount = 1f;
     }
+    public void CooldownPowerup(float duration)
+    {
+        powerupCooldownTime = duration;
+        powerupCooldownTimer = duration;
+        isPowerupCooldown = true;
+        PwrUPimageCooldown.fillAmount = 1f;
+    }
 
- 
 }

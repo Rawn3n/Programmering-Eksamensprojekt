@@ -16,7 +16,7 @@ public class TankShooting : MonoBehaviour
 
     public event Action<float> OnTankShoot;
     public event Action<Sprite> OnPowerupPickup;
-    public event Action OnPowerupEnd;
+    public event Action <float> powerupDuration;
 
     private void Start()
     {
@@ -46,13 +46,16 @@ public class TankShooting : MonoBehaviour
         StartCoroutine(PowerupTimer(powerup, duration));
         if (OnPowerupPickup != null)
             OnPowerupPickup.Invoke(powerup.GetSprite());
+
+        powerupDuration.Invoke(duration);
+
     }
 
     private IEnumerator PowerupTimer(Powerups powerup, float duration)
     {
         yield return new WaitForSeconds(duration);
         powerup.EndPowerup(this);
-        OnPowerupEnd?.Invoke();
+        
 
     }
 }
