@@ -18,7 +18,11 @@ public class TankShooting : MonoBehaviour
     public event Action<Sprite> OnPowerupPickup;
     public event Action OnPowerupEnd;
 
-   
+    private void Start()
+    {
+        OnTankShoot?.Invoke(shootCooldown);
+    }
+
     public void OnShoot(InputAction.CallbackContext context)
     {
         fireCooldown = shootCooldown;
