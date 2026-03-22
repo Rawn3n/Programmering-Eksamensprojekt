@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sniper
   duration: 10
   currentTank: {fileID: 0}
-  powerupSprite: {fileID: 4857205466551783528, guid: 9940b2f12fd3b3e4b85a324516cf68b5, type: 3}
+  powerupSprite: {fileID: -564867258646067283, guid: 7fb18615fcc5236418e8379967991409, type: 3}
   scaleFactor: 2
 --- !u!58 &3260180532152851052
 CircleCollider2D:

@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Minigun
   duration: 5
   currentTank: {fileID: 0}
-  powerupSprite: {fileID: 4857205466551783528, guid: 9940b2f12fd3b3e4b85a324516cf68b5, type: 3}
+  powerupSprite: {fileID: -6264959908654988089, guid: 40a10a9548d1be2498ca894db7114897, type: 3}
 --- !u!58 &3260180532152851052
 CircleCollider2D:
   m_ObjectHideFlags: 0

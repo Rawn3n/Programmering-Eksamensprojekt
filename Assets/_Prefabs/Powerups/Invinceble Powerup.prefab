@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -564867258646067283, guid: 7fb18615fcc5236418e8379967991409, type: 3}
+  m_Sprite: {fileID: -8485875958433275727, guid: f084c1355daab0248bafaf9ab2baebbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Invincible
   duration: 10
   currentTank: {fileID: 0}
-  powerupSprite: {fileID: 4857205466551783528, guid: 9940b2f12fd3b3e4b85a324516cf68b5, type: 3}
+  powerupSprite: {fileID: -8485875958433275727, guid: f084c1355daab0248bafaf9ab2baebbb, type: 3}
 --- !u!58 &3260180532152851052
 CircleCollider2D:
   m_ObjectHideFlags: 0
