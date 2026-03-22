@@ -20,11 +20,11 @@ public abstract class Powerups : MonoBehaviour
         return powerupSprite;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D c)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (c.collider.CompareTag("Player"))
         {
-            TankShooting tank = collision.gameObject.GetComponent<TankShooting>();
+            TankShooting tank = c.gameObject.GetComponent<TankShooting>();
             tank.ActivatePowerup(this, duration);
             Destroy(gameObject);
         }
