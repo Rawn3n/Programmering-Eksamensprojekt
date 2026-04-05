@@ -18,16 +18,13 @@ public class UI_Shoot : MonoBehaviour
     private Sprite NonePowerUpImage;
     [SerializeField]
     private Image PwrUPimageCooldown;
-    //[SerializeField]
-    //private TMP_Text textCooldown;
+   
 
     //til shoot håndtering
-    // bruges ikke private bool isCooldown = false;
     private float cooldownTime = 10.0f;
     private float cooldownTimer = 0.0f;
     
     //til powerup håndtering
-    // bruges ikke private bool isPowerupCooldown = false;
     private float powerupCooldownTime = 0.0f;
     private float powerupCooldownTimer = 0.0f;
 

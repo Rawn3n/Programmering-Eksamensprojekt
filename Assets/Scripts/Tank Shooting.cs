@@ -36,7 +36,6 @@ public class TankShooting : MonoBehaviour
 
         lastShotTime = Time.time;
 
-        //udsender event
         OnTankShoot?.Invoke(fireCooldown);
     }
 

@@ -12,5 +12,4 @@ public class Sniper : Powerups
         tank.bulletScale /= scaleFactor;
     }
 
-    
 }
