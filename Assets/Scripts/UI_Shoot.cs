@@ -22,12 +22,12 @@ public class UI_Shoot : MonoBehaviour
     //private TMP_Text textCooldown;
 
     //til shoot håndtering
-    private bool isCooldown = false;
+    // bruges ikke private bool isCooldown = false;
     private float cooldownTime = 10.0f;
     private float cooldownTimer = 0.0f;
     
     //til powerup håndtering
-    private bool isPowerupCooldown = false;
+    // bruges ikke private bool isPowerupCooldown = false;
     private float powerupCooldownTime = 0.0f;
     private float powerupCooldownTimer = 0.0f;
 
@@ -103,7 +103,7 @@ public class UI_Shoot : MonoBehaviour
     {
         cooldownTime = duration;
         cooldownTimer = duration;
-        isCooldown = true;
+       
 
         textCooldown.gameObject.SetActive(true);
         imageCooldown.fillAmount = 1f;
@@ -116,7 +116,7 @@ public class UI_Shoot : MonoBehaviour
     {
         powerupCooldownTime = duration;
         powerupCooldownTimer = duration;
-        isPowerupCooldown = true;
+       
         PwrUPimageCooldown.fillAmount = 1f;
 
         StartCoroutine(ApplyPowerupCooldown());
