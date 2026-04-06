@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private float p1Score = 0;
     private float p2Score = 0;
 
+
     void Awake()
     {
 
@@ -73,8 +74,20 @@ public class GameManager : MonoBehaviour
             // Find HUD’en for denne spiller i Canvas
             UI_Shoot hud = playerHUDs[i]; // antag du har en array af HUDs i samme rækkefølge som players
 
+            if (i == 0)
+            {
+                playerHUDs[i].scoreText.text = $"{p1Score}";
+            }
+            else if (i == 1)
+            {
+                playerHUDs[i].scoreText.text = $"{p2Score}";
+            }
+            //playerHUDs[i].scoreText.text = $"Player {i + 1} Score: {(i == 0 ? p1Score : p2Score)}";
+
+
             // Tilknyt HUD til spilleren
             hud.SetTank(tank);
+            
 
         }
     }
@@ -138,11 +151,14 @@ public class GameManager : MonoBehaviour
         {
             p1Score++;
             Debug.Log($"Player 1 wins! Score: {p1Score}");
+            //p1ScoreText.text = $"{p1Score}";
         }
         else if (winner.name == "Player2(Clone)")
         {
             p2Score++;
             Debug.Log($"Player 2 wins! Score: {p2Score}");
+            //p2ScoreText.text = $"{p2Score}";
+
         }
     }
 

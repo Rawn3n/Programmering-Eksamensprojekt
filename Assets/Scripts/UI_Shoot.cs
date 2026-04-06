@@ -18,7 +18,9 @@ public class UI_Shoot : MonoBehaviour
     private Sprite NonePowerUpImage;
     [SerializeField]
     private Image PwrUPimageCooldown;
-   
+
+    [SerializeField] public TMPro.TextMeshProUGUI scoreText;
+
 
     //til shoot håndtering
     private float cooldownTime = 10.0f;
@@ -41,7 +43,9 @@ public class UI_Shoot : MonoBehaviour
 
     private void OnDisable()
     {
-        tankShooting.OnTankShoot -= StartCooldown;
+        if (tankShooting == null) return; // gør så at når scenen reloader og UI_Shoot bliver disabled, så prøver den ikke at fjerne event handlers fra en null reference og vi får ikke errors
+
+        tankShooting.OnTankShoot -= StartCooldown;  
         tankShooting.OnPowerupPickup -= SetPowerupImage;
         tankShooting.powerupDuration -= CooldownPowerup;
     }
