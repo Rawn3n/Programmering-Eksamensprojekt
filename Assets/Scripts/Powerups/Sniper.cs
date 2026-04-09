@@ -10,6 +10,8 @@ public class Sniper : Powerups
     public override void EndPowerup(TankShooting tank)
     {
         tank.bulletScale /= scaleFactor;
+
+        isPowerupActive = false;
     }
 
 }

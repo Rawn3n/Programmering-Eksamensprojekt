@@ -19,6 +19,7 @@ public class Invincible : Powerups
         {
             Object.Destroy(shieldVisual);
         }
+        isPowerupActive = false;
     }
 
     private GameObject CreateShield(Transform parent)

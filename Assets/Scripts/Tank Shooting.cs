@@ -18,6 +18,8 @@ public class TankShooting : MonoBehaviour
     public event Action<Sprite> OnPowerupPickup;
     public event Action <float> powerupDuration;
 
+    bool isPowerupActive = false;
+
     private void Start()
     {
         OnTankShoot?.Invoke(shootCooldown);
@@ -41,6 +43,13 @@ public class TankShooting : MonoBehaviour
 
     public void ActivatePowerup(Powerups powerup, float duration)
     {
+        if (isPowerupActive)
+        {
+            Debug.Log("Already have an active powerup!");
+            return;
+        }
+
+        isPowerupActive = true;
         powerup.StartPowerup(this);
         StartCoroutine(PowerupTimer(powerup, duration));
         if (OnPowerupPickup != null)
@@ -54,7 +63,8 @@ public class TankShooting : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         powerup.EndPowerup(this);
-        
+        isPowerupActive = false;
+
 
     }
 }

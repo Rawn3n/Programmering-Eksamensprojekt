@@ -10,6 +10,7 @@ public abstract class Powerups : MonoBehaviour
     [SerializeField] protected float duration = 10f;
     [SerializeField] private GameObject currentTank;
     [SerializeField] protected Sprite powerupSprite;
+    protected bool isPowerupActive = false;
 
     public abstract void EndPowerup(TankShooting tank);
     public abstract void StartPowerup(TankShooting tank);
@@ -19,9 +20,13 @@ public abstract class Powerups : MonoBehaviour
     {
         return powerupSprite;
     }
-
+        
     private void OnCollisionEnter2D(Collision2D c)
     {
+        Debug.Log(isPowerupActive);
+        if (isPowerupActive) return;
+        isPowerupActive = true;
+
         if (c.collider.CompareTag("Player"))
         {
             TankShooting tank = c.gameObject.GetComponent<TankShooting>();
